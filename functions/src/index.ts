@@ -40,6 +40,7 @@ bot.action('FMAN', ctx => {
             sortBy: 'relevancy',
         })
         .then(response => {
+            console.log(response.articles);
             ctx.reply(JSON.stringify(response.articles[Math.floor(Math.random() * (20))].title));
             ctx.reply(JSON.stringify(response.articles[Math.floor(Math.random() * (20))].title));
             ctx.reply(JSON.stringify(response.articles[Math.floor(Math.random() * (20))].title));
@@ -62,6 +63,6 @@ bot.on('message', (ctx) => {
     ctx.telegram.sendMessage(channel, message);
 });
 
-// bot.launch()
+//bot.launch()
 
 exports.bot = functions.https.onRequest((req, res) => bot.handleUpdate(req.body, res))
